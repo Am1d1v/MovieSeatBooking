@@ -1,12 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;900&display=swap')
 
 *
     box-sizing: border-box
 
 body
-    background-color: #f4f4f4
+    background-color: #242333
+    color: #fff
     height: 100vh
     display: flex
+    flex-direction: column
     justify-content: center
     align-items: center
     padding: 10px
+    font-family: 'Lato', sans-serif
+    margin: 0
+
+.movie-container
+    margin: 20px 0
+    & select
+        background-color: #fff
+        border: none
+        border-radius: 5px
+        font-size: 15px
+        margin-left: 10px
+        padding: 5px 15px
+
+.seat
+    background-color: #444451      
+    height: 12px
+    width: 15px 
+    margin: 3px 
+    border-top-left-radius: 10px
+    border-top-right-radius: 10px
+    &.selected
+        background-color: #6feaf6
+
+.row
+    display: flex
 
