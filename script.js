@@ -27,11 +27,21 @@ movieSelect.addEventListener('change', (e) => {
 // Update total and count
 function updateSelectedCount(){
     // Number of selected seats
-    const selectedSeats = document.querySelectorAll('.row .selected').length;
-    count.innerHTML = selectedSeats;
+    const selectedSeats = document.querySelectorAll('.row .selected');
+    const selectedSeatsCount = selectedSeats.length;
+    count.innerHTML = selectedSeatsCount;
+
+    // Mapped array of salected seats
+    const seatsArray = [...selectedSeats].map((seat) => [...seats].indexOf(seat));
+
+    // Save selected seats in localStorage
+    localStorage.setItem('SelectedSeats', JSON.stringify(seatsArray))
+
+    console.log(seatsArray);
 
     // Total Price
-    total.textContent = selectedSeats * ticketPrice;
+    total.textContent = selectedSeatsCount * ticketPrice;
 
 }
-updateSelectedCount();
+
+
