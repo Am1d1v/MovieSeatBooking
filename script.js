@@ -21,8 +21,15 @@ seats.forEach((seat) => {
 movieSelect.addEventListener('change', (e) => {
     ticketPrice = +e.target.value;
 
+    setMovieData(e.target.selectedIndex, ticketPrice);
     updateSelectedCount();
 })
+
+// Save selected movie index and price
+function setMovieData(movieIndex, moviePrice){
+   localStorage.setItem('selectedMovieIndex', movieIndex);
+   localStorage.setItem('seelctedMoviePrice', moviePrice); 
+}
 
 // Update total and count
 function updateSelectedCount(){
@@ -37,7 +44,6 @@ function updateSelectedCount(){
     // Save selected seats in localStorage
     localStorage.setItem('SelectedSeats', JSON.stringify(seatsArray))
 
-    console.log(seatsArray);
 
     // Total Price
     total.textContent = selectedSeatsCount * ticketPrice;
