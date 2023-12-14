@@ -9,17 +9,31 @@ let ticketPrice = +movieSelect.value;
 
 // Get data from localStorage and populate UI
 function populateUI(){
+    // Selected seats
     const selectedSeats = JSON.parse(localStorage.getItem('SelectedSeats'));
 
     if(selectedSeats !== null && selectedSeats.length > 0){
         seats.forEach((seat, index) => {
             if(selectedSeats.indexOf(index) > -1){
                 seat.classList.add('selected');
+                updateSelectedCount();
             }
         });
     }
+
+    // Selected Movies
+    const selectedMovieIndex = localStorage.getItem('selectedMovieIndex');
+
+    if(selectedMovieIndex !== null){
+        movieSelect.selectedIndex = selectedMovieIndex;
+        updateSelectedCount();
+    }
+
 }
 populateUI();
+
+// Initial count and tital count
+updateSelectedCount();
 
 // Select and deselect seat
 seats.forEach((seat) => {
