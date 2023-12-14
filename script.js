@@ -7,6 +7,19 @@ const total = document.querySelector('.total');
 const movieSelect = document.querySelector('#movie');
 let ticketPrice = +movieSelect.value;
 
+// Get data from localStorage and populate UI
+function populateUI(){
+    const selectedSeats = JSON.parse(localStorage.getItem('SelectedSeats'));
+
+    if(selectedSeats !== null && selectedSeats.length > 0){
+        seats.forEach((seat, index) => {
+            if(selectedSeats.indexOf(index) > -1){
+                seat.classList.add('selected');
+            }
+        });
+    }
+}
+populateUI();
 
 // Select and deselect seat
 seats.forEach((seat) => {
